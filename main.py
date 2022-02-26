@@ -24,11 +24,14 @@ async def main():
         elif '@' in telegram_channel:
             telegram_channel = telegram_channel[1:]
         print(telegram_channel)
-        result = await client(functions.account.ReportPeerRequest(
-            peer=telegram_channel,
-            reason=types.InputReportReasonSpam(),
-            message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE' + str(random.random())
-        ))
+        try:
+            result = await client(functions.account.ReportPeerRequest(
+                peer=telegram_channel,
+                reason=types.InputReportReasonSpam(),
+                message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE' + str(random.random())
+            ))
+        except ValueError:
+            pass
         print(result)
         await asyncio.sleep(1 + 2 * random.random())
 with client:
