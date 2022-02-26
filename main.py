@@ -16,10 +16,11 @@ async def main():
     telegram_list = open('telegram_db', 'r').readlines()
     for (i,telegram_channel) in enumerate(telegram_list):
         if "https://" in telegram_channel:
-            telegram_channel = telegram_channel.split('/')[-1]
+            telegram_channel = telegram_channel.split('/')[-1].strip('\n')
         elif '@' in telegram_channel:
-            telegram_channel = telegram_channel[1:]
-
+            telegram_channel = telegram_channel[1:].strip('\n')
+        else:
+            telegram_channel = telegram_channel.strip('\n')
         print(telegram_channel)
         result = client(functions.account.ReportPeerRequest(
             peer=telegram_channel,
