@@ -30,9 +30,9 @@ async def main():
                 reason=types.InputReportReasonSpam(),
                 message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE' + str(random.random())
             ))
+            print(result)
         except ValueError:
-            pass
-        print(result)
+            print("Channel not found")
         await asyncio.sleep(1 + 2 * random.random())
 with client:
 
