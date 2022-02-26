@@ -33,7 +33,7 @@ async def main():
             print(result)
         except ValueError:
             print("Channel not found")
-        await asyncio.sleep(1 + 2 * random.random())
+        await asyncio.sleep(3 + 2 * random.random())
 with client:
 
     client.loop.run_until_complete(main())
