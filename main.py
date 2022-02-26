@@ -10,7 +10,6 @@ api_hash = questionary.password('Api hash:').ask()
 
 
 
-
 client = TelegramClient('session_new', api_id, api_hash)
 client.start()
 
@@ -31,7 +30,7 @@ async def main():
             message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE' + str(random.random())
         ))
         print(result)
-        await asyncio.sleep(1)
+        await asyncio.sleep(1 + 2 * random.random())
 with client:
 
     client.loop.run_until_complete(main())
