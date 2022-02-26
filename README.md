@@ -12,8 +12,8 @@ cd telegram_report_bot_ua
 pip install -r requirements.txt
 ```
 4. Переходимо за посиланням  https://my.telegram.org/, вводимо свій номер телефону та код авторизації
-Переходимо у вкладку API development tools, пишемо любий App title та Short name
-Нагорі отримуємо App api_id та App api_hash
+<br>Переходимо у вкладку API development tools, пишемо любий App title та Short name
+<br>Нагорі отримуємо App api_id та App api_hash
 <br>**ПЕРЕДАВАТИ КОМУСЬ `api_id` та `api_hash` НІ В ЯКОМУ РАЗІ НЕ МОЖНА!!! Вони дают можливіть контролювати вашу персональну сторінку у Телеграммі.**
 
 ## Використання 
