@@ -1,10 +1,15 @@
 import asyncio
+import random
+
 from telethon import TelegramClient
 from telethon import functions, types
 import questionary
 
 api_id = int(questionary.password('Api ID:').ask())
 api_hash = questionary.password('Api hash:').ask()
+
+
+
 
 client = TelegramClient('session_new', api_id, api_hash)
 client.start()
@@ -22,13 +27,14 @@ async def main():
         else:
             telegram_channel = telegram_channel.strip('\n')
         print(telegram_channel)
+        telegram_channel = "+VKWSAJJVAtsyZmE6"
         result = client(functions.account.ReportPeerRequest(
             peer=telegram_channel,
             reason=types.InputReportReasonSpam(),
-            message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE'
+            message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE' + str(random.random())
         ))
         print(result)
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(1)
 with client:
     client.loop.run_until_complete(main())
 
