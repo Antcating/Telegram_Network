@@ -1,0 +1,2 @@
+questionary~=1.10.0
+Telethon~=1.24.0
