@@ -21,14 +21,11 @@ async def main():
     telegram_list = open('telegram_db', 'r').readlines()
     for (i,telegram_channel) in enumerate(telegram_list):
         if "https://" in telegram_channel:
-            telegram_channel = telegram_channel.split('/')[-1].strip('\n')
+            telegram_channel = telegram_channel.split('/')[-1]
         elif '@' in telegram_channel:
-            telegram_channel = telegram_channel[1:].strip('\n')
-        else:
-            telegram_channel = telegram_channel.strip('\n')
+            telegram_channel = telegram_channel[1:]
         print(telegram_channel)
-        telegram_channel = "+VKWSAJJVAtsyZmE6"
-        result = client(functions.account.ReportPeerRequest(
+        result = await client(functions.account.ReportPeerRequest(
             peer=telegram_channel,
             reason=types.InputReportReasonSpam(),
             message='RUSSIAN PROPAGANDA AGAINST UKRAINE DURING RUSSIAN INVASION IN UKRAINE' + str(random.random())
@@ -36,5 +33,6 @@ async def main():
         print(result)
         await asyncio.sleep(1)
 with client:
+
     client.loop.run_until_complete(main())
 
