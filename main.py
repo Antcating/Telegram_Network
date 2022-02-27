@@ -17,13 +17,17 @@ print('Bot started')
 
 
 async def main():
+    number_of_channels_rep = 150
+
     telegram_list = open('telegram_db', 'r').readlines()
-    for (i,telegram_channel) in enumerate(telegram_list):
+    random.shuffle(telegram_list)
+
+    for (i,telegram_channel) in enumerate(telegram_list[:number_of_channels_rep]):
         if "https://" in telegram_channel:
             telegram_channel = telegram_channel.split('/')[-1]
         elif '@' in telegram_channel:
             telegram_channel = telegram_channel[1:]
-        print(telegram_channel)
+        print(i+1, telegram_channel.strip())
         try:
             result = await client(functions.account.ReportPeerRequest(
                 peer=telegram_channel,
