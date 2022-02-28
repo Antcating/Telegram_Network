@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:5.0
+    restart: unless-stopped
+    ports:
+      - 28017:27017
+  app:
+    depends_on:
+      - mongo
+    image: ndh1/telegram_report_bot_ua:latest
+    restart: unless-stopped
+    environment:
+      - MONGO_HOST=mongo
