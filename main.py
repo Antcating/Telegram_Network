@@ -10,7 +10,13 @@ from telethon import functions, types
 
 load_dotenv()
 
-myClient = pymongo.MongoClient("mongodb://localhost:27017/")
+if os.getenv('MONGO_HOST'):
+    mongoHost = os.getenv('MONGO_HOST')
+else:
+    mongoHost = '127.0.0.1'
+
+myClient = pymongo.MongoClient(
+    f"mongodb://{mongoHost}:27017/")
 
 db = myClient["telegram_report_bot_ua"]
 
@@ -75,7 +81,6 @@ async def runBot():
 
     for (i, telegram_channel) in enumerate(channels):
         try:
-            print(telegram_channel)
             message = 'Propaganda of the war in Ukraine. Propaganda of the murder of Ukrainians and Ukrainian soldiers.' + \
                 str(random.random())
 
