@@ -8,12 +8,14 @@
 
     WORKDIR /home
 
+    # clone from git
     RUN git clone https://github.com/AndrewHaluza/telegram_report_bot_ua.git 
 
     WORKDIR /home/telegram_report_bot_ua
 
-    COPY ./.env ./
+    # make build locally
+    # COPY ./ ./
 
     RUN pip3 install -r ./requirements.txt
 
-    CMD python3 ./main.py
+    ENTRYPOINT [ "python3", "./main.py" ]
